@@ -1,4 +1,4 @@
-def proc_power(mean_diff, std, size=100, alpha=0.05, desired_power=0.8):
+def proc_power(mean_diff, std, size=100, alpha=0.05, desired_power=0.8, side='two-sided'):
     """
     calculate the power for a given mean difference and std. the function plots a graph showing the comparison between desired mean differences
     :param mean_diff: the desired mean difference
@@ -21,7 +21,7 @@ def proc_power(mean_diff, std, size=100, alpha=0.05, desired_power=0.8):
 
     sizes = range(4, size+1, 2)
     for sample2_size in sizes:
-        n = tt_ind_solve_power(effect_size=effect_size, nobs1=sample2_size/2, alpha=alpha, ratio=1.0, alternative='two-sided')
+        n = tt_ind_solve_power(effect_size=effect_size, nobs1=sample2_size/2, alpha=alpha, ratio=1.0, alternative=side)
         powers.append(n)
 
     plt.title('Power vs. Sample Size')
